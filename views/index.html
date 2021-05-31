@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--css and js-->
+    <script src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <button id="loginBtn">로그인</button>
+    <a href="/user/info">회원정보 보기</a>
+    <div class="layerPopup">    <!--전체를 검정색으로 깔아주는 역할-->
+        <div class="loginPopup">    <!--로그인 영역(배경 흰색) 가운데로 설정-->
+            <div id="loginForm">
+                <h2>로그인페이지</h2>
+                <input type="text" name="userid" id="userid" placeholder="아이디 입력하기">
+                <input type="password" name="userpw" id="userpw" placeholder="패스워드 입력하기">
+                <button id="localLogin" class="loginSubmit">로그인</button>
+                <button id="kakaoLogin" class="loginSubmit kakao">카카오로그인</button>
+                <p class="joinWord">아직도 회원이 아니세요?
+                    <a href="/user/join"><span class="joinBtn">회원가입</span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
