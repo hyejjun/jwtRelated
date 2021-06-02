@@ -1,0 +1,76 @@
+socket 설치 후 
+최초 요청 응답 http hand shaker
+
+
+
+cookie.js
+let cookie = 'AccessToken=eyJ0cHkiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOiJldGUyMyIsImV4cCI6MTYyMjYwNTU5NDExMX0.6%2FRb48bf5VmSq%2FDReaLgrzUOcOexYHKC%2BvU7WwhZM2w; aaaa=aasdfasdffasdgadfasdf; asdfasd=sdfasdfasdfasdf'
+
+let cookieArr = cookie.split(';')
+//split -> 특정 글자를 split 인자값 안에 있는 글자 기준으로 잘라서 배열 형태로 반환해준다.
+//console.log(cookieArr);
+cookieArr.forEach(v=>{
+    let name = v.split('=');
+    //console.log(name[0].trim());    //trim 은 공백을 제거해주는 매서드 - 원래 앞에 공백있어서 그거 없애줌
+    if(name[0].trim() == 'AccessToken'){
+        console.log(name[1]);
+    }
+
+})
+
+
+
+    let [name,value] = v.split('=');    //비구조 할당문
+    
+    if(name.trim() == 'AccessToken'){
+        console.log(value);
+    }
+
+
+
+
+    let obj = JSON.parse(payload);  // 객체 형태로 변환
+        console.log(obj);       //{ userid: 'ete23', exp: 1622605594111 }
+        console.log(obj.userid);
+
+
+[줄인 버전]
+        let {userid} = JSON.parse(payload);     //비구조 할당문
+        // = userid = JSON.parse(payload).userid 와 같은 의미
+        console.log(userid);
+
+
+---------------------------------------
+
+let cookie = 'AccessToken=eyJ0cHkiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOiJldGUyMyIsImV4cCI6MTYyMjYwNTU5NDExMX0.6%2FRb48bf5VmSq%2FDReaLgrzUOcOexYHKC%2BvU7WwhZM2w; aaaa=aasdfasdffasdgadfasdf; asdfasd=sdfasdfasdfasdf'
+
+let cookieArr = cookie.split(';')
+//split -> 특정 글자를 split 인자값 안에 있는 글자 기준으로 잘라서 배열 형태로 반환해준다.
+//console.log(cookieArr);
+cookieArr.forEach(v=>{
+    let [name,value] = v.split('=');
+    
+    if(name.trim() == 'AccessToken'){
+        let jwt = value.split('.');
+        console.log(jwt[0], jwt[1], jwt[2]);
+        let payload = Buffer.from(jwt[1],'base64').toString() //복호화
+    
+        let {userid} = JSON.parse(payload);     //비구조 할당문
+        console.log(userid);
+    }
+})
+
+----------------------------
+메시지 보내기
+
+chatSEnd에는 직접 이벤트를 ㄴ줘야함
+onclikc으로 - 타이밍이 안맞아서
+(4교시 마지막 부분 다시 합너 체크하기)
+
+script가 로드 되는 시점이랑 html;을 가져오는 시점이 달라서 js에서
+addEventListener 로 줄 수 가 없다.
+
+처음에 로드 될때는 저 채팅 보내는 부분이 없기때문에 타이밍이 안맞다는거임
+
+--------------------
+누가 썼는지까지 나오게 하는게 id 값 가져오는 부분이다.
